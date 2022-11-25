@@ -1,21 +1,3 @@
-# это было слишком сложное задание, я начала писать код сама, но потом поняла,
-# что потрачу слишком много времени на него, поэтому посмотрела вебинар и взяла все оттуда,
-# только оставила некоторые свои названия атрибутов и переменных
-
-# у меня несколько вопросов (см. комментарии); если вас не затруднит, ответьте, пожалуйста))
-# если затруднит, то ладно)
-
-# нашла по поиску в slack как вывести доски горизонтально, но у меня почему-то не работал вариант,
-# предложенный там (пришлось дописать self в двух местах, чтобы заработал), хотя у человека,
-# который попробовал тот код, все работало
-
-
-# Короче, я понимаю, что полностью зафейлила это задание, т.е. не смогла сама хоть что-то сделать,
-# но есть и плюсы: чтобы как-то компенсировать трудность этого задания,
-# я начала смотреть Наруто (просмотр которого откладывала очень долго).
-# Если так пойдет и дальше, если следующее задание будет еще сложнее,
-# я начну смотреть Блича. Спасибо за вклад в мое развитие!^_^
-
 from random import randint
 
 
@@ -42,7 +24,7 @@ class Dot:
     def __eq__(self, other):
         return self.x == other.x and self.y == other.y
 
-    def __repr__(self): # почему именно __repr__? если поставить __str__ ничего не меняется. Я погуглила разницу между ними, и мне кажется, что здесь можно поставить как __repr__, так и __str__
+    def __repr__(self): 
         return f"Dot({self.x}, {self.y})"
 
 
@@ -53,7 +35,7 @@ class Ship:
         self.orientation = orientation
         self.lives = length
 
-    @property # я так и не поняла смыла @propery. То, что я смогу вызывать метод без скобочек не добавляет ему смысла)
+    @property 
     def dots(self):
         ship_dots = []
         for i in range(self.length):
@@ -99,7 +81,7 @@ class Board:
     def out(self, d):
         return not ((0 <= d.x < self.size) and (0 <= d.y < self.size))
 
-    def contour(self, ship, verb=False): # почему именно verb? это название не несет никакого смысла
+    def contour(self, ship, verb=False): 
         near = [
             (-1, -1), (-1, 0), (-1, 1),
             (0, -1), (0, 0), (0, 1),
@@ -244,7 +226,7 @@ class Game:
         print(" y - номер столбца ")
 
 
-    def merge_boards(self, first, second): # пришлось дописать self
+    def merge_boards(self, first, second): 
         first_lines = first.split("\n")
         second_lines = second.split("\n")
 
@@ -262,7 +244,7 @@ class Game:
             print()
             user_board = "Доска пользователя:\n" + str(self.us.board)
             ai_board = "Доска компьютера:\n" + str(self.ai.board)
-            print(Game.merge_boards(self, user_board, ai_board)) # пришлось дописать self
+            print(Game.merge_boards(self, user_board, ai_board)) 
             print()
 
             if num % 2 == 0:
